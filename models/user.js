@@ -69,8 +69,6 @@ var userSchema = new mongoose.Schema({
         state: String,
         zipCode: {
             type: Number,
-            max: 6,
-            min: 5
         },
     },
 
