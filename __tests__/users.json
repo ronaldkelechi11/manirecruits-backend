@@ -1,22 +1,50 @@
 [
     {
-        "id": "",
-        "firstname": "",
-        "lastname": "",
-        "username": "",
-        "email": "",
-        "password": "",
-        "telephone": "",
-        "date-of-birth": "",
-        "profileImage": "",
-        "coverPhoto": "",
-        "about": "",
-        "address": {
-            "street": "",
-            "city": "",
-            "state": "",
-            "zipCode": ""
+        "personal_information": {
+            "firstname": "",
+            "lastname": "",
+            "username": "",
+            "email_address": "",
+            "password": "",
+            "profile_picture": "",
+            "date_of_birth": ""
         },
-        "posts": {}
+        "authentication": {
+            "password": ""
+        },
+        "posts": [
+            {}
+        ],
+        "contact_information": {
+            "phone_number": "",
+            "address": {
+                "street": "",
+                "city": "",
+                "state": "",
+                "zipCode": ""
+            }
+        },
+        "professional_information": {
+            "work_experience": [],
+            "education_background": [],
+            "skills": [],
+            "industry_job_preferences": []
+        },
+        "additional_details": {
+            "linkedin_profile": "",
+            "facebook_profile": "",
+            "instagram_profile": "",
+            "personal_website": ""
+        },
+        "preferences": {
+            "preferred_job_locations": [],
+            "desired_salary_range": "",
+            "notification_preferences": []
+        },
+        "interests_and_activities": {
+            "hobbies": [],
+            "professional_associations": [],
+            "volunteer_work": []
+        }
     }
 ]
