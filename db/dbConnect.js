@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-
+// Pass the value of the dburl
 const connectDB = async (db_url) => {
 
     try {

@@ -4,6 +4,7 @@ const cors = require('cors');
 const connectDB = require('./db/dbConnect.js')
 const app = express();
 
+
 // ======CORS=========
 const whitelist = ["http://localhost:3000", "http://127.0.0.1:5173"];
 
@@ -18,10 +19,12 @@ const corsOptions = {
     credentials: true,
 }
 
+
 // =========== Middlewares =================
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors(corsOptions));
+
 
 // ======== SERVER LISTENING FUNCTION ============  
 app.listen(process.env.PORT, async () => {
