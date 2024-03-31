@@ -1,1 +1,21 @@
-[]
+[
+    {
+        "id": "",
+        "firstname": "",
+        "lastname": "",
+        "email": "",
+        "password": "",
+        "telephone": "",
+        "date-of-birth": "",
+        "profileImage": "",
+        "coverPhoto": "",
+        "about": "",
+        "address": {
+            "street": "",
+            "city": "",
+            "state": "",
+            "zipCode": ""
+        },
+        "posts": {}
+    }
+]
