@@ -3,6 +3,7 @@
         "id": "",
         "firstname": "",
         "lastname": "",
+        "username": "",
         "email": "",
         "password": "",
         "telephone": "",

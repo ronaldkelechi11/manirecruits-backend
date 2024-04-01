@@ -20,10 +20,20 @@ const corsOptions = {
 }
 
 
-// =========== Middlewares =================
+// =========== MIDDLEWARES ========================
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors(corsOptions));
+
+
+// =========== FETCHING ROUTES =====================
+const loginRoute = require('./routes/login.js')
+const signupRoute = require('./routes/signup.js')
+
+
+// =========== ASSIGNING ROUTES ====================
+app.use('/api/login', loginRoute)
+app.use('/api/signup', signupRoute)
 
 
 // ======== SERVER LISTENING FUNCTION ============  
