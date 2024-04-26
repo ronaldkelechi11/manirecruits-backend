@@ -25,7 +25,6 @@ router.post('/', async (req, res) => {
 router.post("/:email/2", async (req, res) => {
 
     var email = req.params.email
-    var username = req.body.username
     var lastname = req.body.lastname
     var firstname = req.body.firstname
     var date_of_birth = req.body.date_of_birth
@@ -34,7 +33,6 @@ router.post("/:email/2", async (req, res) => {
     if (user) {
         user.updateOne(
             {
-                username: username,
                 firstname: firstname,
                 lastname: lastname,
                 date_of_birth: date_of_birth
