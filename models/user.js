@@ -83,8 +83,14 @@ var userSchema = new mongoose.Schema({
     // PREFERENCES
     preferred_job_locations: [String],
     desired_salary_range: {
-        type: String,
-        default: "30,000"
+        min: {
+            type: String,
+            default: "30,000"
+        },
+        max: {
+            type: String,
+            default: "50,000"
+        }
     },
 
     // USED FOR FEED

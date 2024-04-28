@@ -21,10 +21,11 @@ router.post('/', async (req, res) => {
 })
 
 
-// ======= SIGNUP STEP 2 (username,firstname,lastname,date_of_birth)===========
+// ======= SIGNUP STEP 2 (firstname,lastname,date_of_birth)===========
 router.post("/:email/2", async (req, res) => {
 
     var email = req.params.email
+
     var lastname = req.body.lastname
     var firstname = req.body.firstname
     var date_of_birth = req.body.date_of_birth
@@ -48,16 +49,18 @@ router.post("/:email/2", async (req, res) => {
 })
 
 
-//  ======= SIGNUP STEP 3 (phone_number,address) ===========
+
+//  ======= SIGNUP STEP 3 (address) ===========
 router.post("/:email/3", async (req, res) => {
 
     var email = req.params.email
-    var phone_number = req.body.phone_number
 
+    var phone_number = req.body.phone_number
     var street = req.body.street
     var city = req.body.city
     var state = req.body.state
     var zipCode = req.body.zipCode
+
     var address = {
         street: street,
         city: city,
@@ -81,5 +84,6 @@ router.post("/:email/3", async (req, res) => {
         res.status(500).send("No user")
     }
 })
+
 
 module.exports = router

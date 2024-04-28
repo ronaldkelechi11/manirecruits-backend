@@ -6,7 +6,7 @@ const app = express();
 
 
 // ======CORS=========
-const whitelist = ["http://localhost:3000", "http://127.0.0.1:5173"];
+const whitelist = ["http://localhost:5173"];
 
 const corsOptions = {
     origin: (origin, callback) => {
