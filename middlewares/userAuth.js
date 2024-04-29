@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 async function decryptPassword(password, encryptedPassword) {
     const auth = await bcrypt.compare(password, encryptedPassword);
 
-    if (auth) {
+    if (auth === true) {
         return true;
     }
     else {

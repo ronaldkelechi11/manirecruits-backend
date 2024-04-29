@@ -19,14 +19,22 @@ router.post('/', async (req, res) => {
     else {
         User.findOne({ email_address: email })
             .then((result) => {
-                if (userAuth.decryptPassword(password, result.password)) {
-                    res.status(200).send()
-                }
-                else {
-                    res.status(404).send()
-                }
+                userAuth.decryptPassword(password, result.password)
+                    .then((result) => {
+                        // Correct password
+                        if (result) {
+                            res.status(200).send()
+                        }
+                        // Incorrect password
+                        else {
+                            res.status(204).send()
+                        }
+                    }).catch((err) => {
+                        console.log(err);
+                    });
+
             }).catch((err) => {
-                res.status(500).send("No user")
+                res.status(500).send("No Such User")
             });
     }
 
