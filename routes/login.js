@@ -10,8 +10,7 @@ const userAuth = require('../middlewares/userAuth');
 
 router.post('/', async (req, res) => {
 
-    let email = req.body.email
-    let password = req.body.password
+    let { email, password } = req.body
 
     if (adminAuth.isAdminLogins(email, password)) {
         res.status(202).send()

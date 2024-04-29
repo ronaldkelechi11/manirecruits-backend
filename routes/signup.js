@@ -5,8 +5,7 @@ const router = express.Router()
 // ======== SIGNUP STEP 1 (email and password) =========
 router.post('/', async (req, res) => {
 
-    let email = req.body.email
-    let password = req.body.password
+    let { email, password } = req.body
 
     var user = new User({
         email_address: email,
@@ -26,9 +25,7 @@ router.post("/:email/2", async (req, res) => {
 
     var email = req.params.email
 
-    var lastname = req.body.lastname
-    var firstname = req.body.firstname
-    var date_of_birth = req.body.date_of_birth
+    var { firstname, lastname, date_of_birth } = req.body
 
     const user = await User.findOne({ email_address: email })
     if (user) {
@@ -55,11 +52,13 @@ router.post("/:email/3", async (req, res) => {
 
     var email = req.params.email
 
-    var phone_number = req.body.phone_number
-    var street = req.body.street
-    var city = req.body.city
-    var state = req.body.state
-    var zipCode = req.body.zipCode
+    var {
+        phone_number,
+        street,
+        city,
+        state,
+        zipCode
+    } = req.body
 
     var address = {
         street: street,
