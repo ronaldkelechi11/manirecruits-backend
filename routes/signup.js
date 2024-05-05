@@ -52,6 +52,17 @@ router.post("/:email/3", async (req, res) => {
 
     var email = req.params.email
 
+    // Create a new Date object
+    const today = new Date();
+
+    // Get the day, month, and year components from the Date object
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based, so we add 1
+    const year = today.getFullYear();
+
+    // Concatenate the day, month, and year with '-' to form the date in dd-mm-yyyy format
+    const formattedDate = `${day}-${month}-${year}`;
+
     var {
         phone_number,
         street,
@@ -72,7 +83,8 @@ router.post("/:email/3", async (req, res) => {
         user.updateOne(
             {
                 address: address,
-                phone_number: phone_number
+                phone_number: phone_number,
+                date_account_created: formattedDate
             }).then((result) => {
                 res.status(200).send()
             }).catch((err) => {

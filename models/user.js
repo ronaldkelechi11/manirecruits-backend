@@ -21,6 +21,7 @@ var userSchema = new mongoose.Schema({
     },
     profile_picture: String,
     date_of_birth: String,
+    date_account_created: String,
 
     // AUTHENTICATION AND VERIFICATION
     password: {
