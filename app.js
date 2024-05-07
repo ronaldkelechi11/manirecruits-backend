@@ -29,11 +29,17 @@ app.use(cors(corsOptions));
 // =========== FETCHING ROUTES =====================
 const loginRoute = require('./routes/login.js')
 const signupRoute = require('./routes/signup.js')
+const userProfileEditRoute = require('./routes/userProfileEdit.js')
 
 
+
+app.get("/", (req, res) => {
+    res.status(200).send("Accessing API")
+})
 // =========== ASSIGNING ROUTES ====================
-app.use('/api/login', loginRoute)
 app.use('/api/signup', signupRoute)
+app.use('/api/login', loginRoute)
+app.use('/api/dashboard/edit', userProfileEditRoute)
 
 
 // ======== SERVER LISTENING FUNCTION ============  

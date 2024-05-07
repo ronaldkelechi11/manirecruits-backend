@@ -31,6 +31,11 @@ var userSchema = new mongoose.Schema({
         max: 64,
         immutable: true
     },
+    role: {
+        type: String,
+        default: "User"
+        // example: Client, Admin, User
+    },
     isVerified: {
         type: Boolean,
         default: false
