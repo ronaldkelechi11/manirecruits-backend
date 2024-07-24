@@ -1,6 +1,40 @@
 const express = require('express')
 const Post = require('../models/Post')
+const User = require('../models/User')
 const router = express.Router()
+
+// Return data for adminMain {userCount, postCount, activeClients}
+router.get('/main', async (req, res) => {
+    var data = {
+        userCount: 0,
+        postCount: 0,
+        activeClients: 0
+    }
+
+    // Get User Count
+    await User.find()
+        .then((result) => {
+            data.userCount = result.length
+            result.forEach(users => {
+                if (users.role == 'client') {
+                    data.activeClients++
+                }
+            })
+        }).catch((err) => {
+            console.log("Can't get User count Lenght");
+        });
+
+    // Get Post Count
+    await Post.find()
+        .then((result) => {
+            data.postCount = result.length
+        }).catch((err) => {
+            console.log("Can't get Post count Lenght");
+        });
+
+    // Return the data to API
+    res.status(200).send(data)
+})
 
 
 
