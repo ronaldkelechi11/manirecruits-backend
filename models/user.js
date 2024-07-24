@@ -19,6 +19,10 @@ var userSchema = new mongoose.Schema({
         max: 64,
         required: true
     },
+    title: {
+        type: String,
+        default: 'None'
+    },
     profile_picture: String,
     date_of_birth: String,
     date_account_created: String,
@@ -34,7 +38,7 @@ var userSchema = new mongoose.Schema({
     role: {
         type: String,
         default: "User"
-        // example: Client, Admin, User
+        // example: Client, User
     },
     isVerified: {
         type: Boolean,

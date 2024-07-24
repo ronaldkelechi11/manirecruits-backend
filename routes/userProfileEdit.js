@@ -25,8 +25,6 @@ router.post("/role/:email", async (req, res) => {
     }
 })
 
-// links
-
 // Add skills
 router.post("/skills/:email", async (req, res) => {
     let email = req.params.email
@@ -50,6 +48,10 @@ router.post("/skills/:email", async (req, res) => {
     }
 })
 
+// links
+router.post("/links/:email", async (req, res) => {
+    let email = req.params.email
+})
 
 // Add salary min and max
 router.post("/salary/:email", async (req, res) => {
@@ -79,6 +81,27 @@ router.post("/salary/:email", async (req, res) => {
 })
 
 // Set Preffered Job Locations
+router.post("/locations/:email", async (req, res) => {
+    let email = req.params.email
+    let { locations } = req.body
+
+    const user = await User.findOne({ email_address: email })
+    try {
+        if (user) {
+            user.updateOne({ preferred_job_locations: locations })
+                .then((result) => {
+                    res.status(200).send()
+                }).catch((err) => {
+                    res.status(404).send()
+                });
+        }
+        else {
+            res.status(500).send("No user")
+        }
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 // Hobbies
 router.post("/hobbies/:email", async (req, res) => {
@@ -135,6 +158,53 @@ router.post("/associations/:email", async (req, res) => {
     try {
         if (user) {
             user.updateOne({ professional_associations: associations })
+                .then((result) => {
+                    res.status(200).send()
+                }).catch((err) => {
+                    res.status(404).send()
+                });
+        }
+        else {
+            res.status(500).send("No user")
+        }
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+// Update phone number
+router.post("/telephone/:email", async (req, res) => {
+    let email = req.params.email
+    let { phone_number } = req.body
+
+    const user = await User.findOne({ email_address: email })
+    try {
+        if (user) {
+            user.updateOne({ phone_number: phone_number })
+                .then((result) => {
+                    res.status(200).send()
+                }).catch((err) => {
+                    res.status(404).send()
+                });
+        }
+        else {
+            res.status(500).send("No user")
+        }
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+
+// Update User Title done
+router.post("/title/:email", async (req, res) => {
+    let email = req.params.email
+    let { title } = req.body
+
+    const user = await User.findOne({ email_address: email })
+    try {
+        if (user) {
+            user.updateOne({ title: title })
                 .then((result) => {
                     res.status(200).send()
                 }).catch((err) => {

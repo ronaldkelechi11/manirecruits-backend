@@ -6,6 +6,7 @@ const app = express();
 
 
 // ======CORS=========
+// TODO: Remove before launch and add Company domain
 const whitelist = ["http://localhost:5173"];
 
 const corsOptions = {
@@ -30,20 +31,25 @@ app.use(cors(corsOptions));
 const loginRoute = require('./routes/login.js')
 const signupRoute = require('./routes/signup.js')
 const userProfileEditRoute = require('./routes/userProfileEdit.js')
+const adminRoute = require('./routes/admin.js')
+const userDashboardRoute = require('./routes/userDashboard.js')
 
 
 
 app.get("/", (req, res) => {
-    res.status(200).send("Accessing API")
+    res.status(200).send("Invalid Route Access Only to /api")
 })
+
 // =========== ASSIGNING ROUTES ====================
 app.use('/api/signup', signupRoute)
 app.use('/api/login', loginRoute)
+app.use('/api/admin', adminRoute)
+app.use('/api/userdashboard', userDashboardRoute)
 app.use('/api/dashboard/edit', userProfileEditRoute)
 
 
 // ======== SERVER LISTENING FUNCTION ============  
 app.listen(process.env.PORT, async () => {
-    await connectDB(process.env.MONGO_LIVE_URL);
+    await connectDB(process.env.MONGO_URL);
     console.log(`Server is Listening on port ${process.env.PORT}`)
 })

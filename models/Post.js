@@ -3,14 +3,22 @@ const mongoose = require('mongoose');
 
 var postSchema = new mongoose.Schema({
     title: String,
-    body: String,
-
-
-    // Convert actual likes display to amount of likes and likes show everyone that liked
-    likes: [{
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: "User"
-    }]
+    summary: String,
+    minimumQualification: String,
+    experienceLevel: String,
+    experienceLength: String,
+    skills: String,
+    applications: String,
+    location: String,
+    organisationLogo: String,
+    organisationName: String,
+    organisationIndustry: String,
+    jobIndustry: String,
+    jobUploadDate: String,
+    salaryRange: String,
+    prefferedGender: String,
+    plusCommision: String,
+    workingDays: [String]
 })
 
 module.exports = mongoose.model("Post", postSchema)
