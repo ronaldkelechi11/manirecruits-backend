@@ -28,7 +28,7 @@ app.use(cors(corsOptions));
 
 
 // =========== FETCHING ROUTES =====================
-const loginRoute = require('./routes/signin.js')
+const loginRoute = require('./routes/login.js')
 const signupRoute = require('./routes/signup.js')
 const userProfileEditRoute = require('./routes/userProfileEdit.js')
 const adminRoute = require('./routes/admin.js')
