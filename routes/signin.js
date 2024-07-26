@@ -1,8 +1,8 @@
 const express = require('express')
-const User = require('../models/User');
+const User = require('../models/User.js');
 const router = express.Router()
-const adminAuth = require('../middlewares/adminAuth');
-const userAuth = require('../middlewares/userAuth');
+const adminAuth = require('../middlewares/adminAuth.js');
+const userAuth = require('../middlewares/userAuth.js');
 
 
 // ======= LOGIN ==========
