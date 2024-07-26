@@ -44,12 +44,12 @@ app.get("/", (req, res) => {
 app.use('/api/signup', signupRoute)
 app.use('/api/login', loginRoute)
 app.use('/api/admin', adminRoute)
-app.use('/api/userdashboard', userDashboardRoute)
+app.use('/api/dashboard', userDashboardRoute)
 app.use('/api/dashboard/edit', userProfileEditRoute)
 
 
 // ======== SERVER LISTENING FUNCTION ============  
 app.listen(process.env.PORT, async () => {
-    await connectDB(process.env.MONGO_URL);
+    await connectDB(process.env.MONGO_LIVE_URL);
     console.log(`Server is Listening on port ${process.env.PORT}`)
 })
