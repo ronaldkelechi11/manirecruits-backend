@@ -7,7 +7,7 @@ const app = express();
 
 // ======CORS=========
 // TODO: Remove before launch and add Company domain
-const whitelist = ["http://localhost:5173", "*"];
+const whitelist = ["http://localhost:5173", "*", "https://manirecruits.vercel.app"];
 
 const corsOptions = {
     origin: (origin, callback) => {
