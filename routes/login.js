@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
         res.status(202).send()
     }
     else {
-        User.findOne({ email_address: email })
+        await User.findOne({ email_address: email })
             .then((result) => {
                 userAuth.decryptPassword(password, result.password)
                     .then((result) => {
