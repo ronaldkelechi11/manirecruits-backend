@@ -1,5 +1,5 @@
 const express = require('express')
-const User = require('../models/User.js');
+const User = require('../models/User');
 const router = express.Router()
 
 // Change user Role to either User or Recruiter
