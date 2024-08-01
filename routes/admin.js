@@ -1,5 +1,5 @@
 const express = require('express')
-const Post = require('../models/Post.js')
+const Post = require('../models/PostModel.js')
 const User = require('../models/UserModel.js')
 const router = express.Router()
 
@@ -37,7 +37,6 @@ router.get('/main', async (req, res) => {
 })
 
 
-
 // Add New Post
 router.post('/addpost', async (req, res) => {
     var { post } = req.body
@@ -51,6 +50,20 @@ router.post('/addpost', async (req, res) => {
         // Internal Server Error
         res.status(500).send()
     });
+})
+
+// Delete a post
+router.post('/deletepost', async (req, res) => {
+    var { post_id } = req.body
+
+    var postToDelete = await Post.findById({ _id: post_id })
+
+    postToDelete.deleteOne()
+        .then((result) => {
+
+        }).catch((err) => {
+
+        });
 })
 
 module.exports = router

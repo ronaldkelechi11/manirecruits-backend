@@ -50,6 +50,6 @@ app.use('/api/dashboard/edit', userProfileEditRoute)
 
 // ======== SERVER LISTENING FUNCTION ============  
 app.listen(process.env.PORT, async () => {
-    await connectDB(process.env.MONGO_LIVE_URL);
+    await connectDB(process.env.MONGO_URL);
     console.log(`Server is Listening on port ${process.env.PORT}`)
 })

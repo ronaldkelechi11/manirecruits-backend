@@ -40,18 +40,6 @@ var userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    followers: [
-        {
-            type: mongoose.SchemaTypes.ObjectId,
-            ref: "User"
-        }
-    ],
-    following: [
-        {
-            type: mongoose.SchemaTypes.ObjectId,
-            ref: "User"
-        }
-    ],
     posts: [
         {
             type: mongoose.SchemaTypes.ObjectId,

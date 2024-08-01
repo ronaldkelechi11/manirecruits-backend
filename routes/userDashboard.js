@@ -1,5 +1,5 @@
 const express = require('express')
-const Post = require('../models/Post.js')
+const Post = require('../models/PostModel.js')
 const User = require('../models/UserModel.js')
 const router = express.Router()
 
@@ -10,12 +10,11 @@ router.get('/settings/:email', async (req, res) => {
 
     await User.find({ email_address: email })
         .then((result) => {
+            result.password = ""
             res.status(200).send(result)
         }).catch((err) => {
             res.status(500).send()
         });
-
-
 })
 
 
