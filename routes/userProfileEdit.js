@@ -2,6 +2,33 @@ const express = require('express')
 const User = require('../models/UserModel.js');
 const router = express.Router()
 
+// Fetch all user details
+router.get("/:email", async (req, res) => {
+    let { email } = req.params
+
+    User.findOne({ email_address: email })
+        .then((result) => {
+
+            console.log(result);
+
+            // User not found
+            if (result == '') {
+                res.status(404).send('Resource not found')
+            }
+
+            // User Found
+            else {
+                result.password = ".";
+
+                res.status(200).send(result);
+            }
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).send()
+        });
+})
+
+
 // Change user Role to either User or Recruiter
 router.post("/role/:email", async (req, res) => {
     let email = req.params.email
@@ -149,7 +176,7 @@ router.post("/volunteer/:email", async (req, res) => {
     }
 })
 
-// Proffessional Associations
+// Proffessional Associations done
 router.post("/associations/:email", async (req, res) => {
     let email = req.params.email
     let { associations } = req.body
@@ -172,10 +199,10 @@ router.post("/associations/:email", async (req, res) => {
     }
 })
 
-// Update phone number
-router.post("/telephone/:email", async (req, res) => {
+// Update phone number or email address
+router.post("/contactdetails/:email", async (req, res) => {
     let email = req.params.email
-    let { phone_number } = req.body
+    let { phone_number, email_address } = req.body
 
     const user = await User.findOne({ email_address: email })
     try {
@@ -194,7 +221,6 @@ router.post("/telephone/:email", async (req, res) => {
         console.log(error);
     }
 })
-
 
 // Update User Title done
 router.post("/title/:email", async (req, res) => {

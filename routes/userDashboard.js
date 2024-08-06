@@ -4,15 +4,27 @@ const User = require('../models/UserModel.js')
 const router = express.Router()
 
 
-// Get user details
+// Get all user details
 router.get('/settings/:email', async (req, res) => {
     const { email } = req.params
 
     await User.find({ email_address: email })
         .then((result) => {
-            result.password = ""
-            res.status(200).send(result)
+            
+            // User not found
+            if (result == '') {
+                res.status(404).send('Resource not found')
+            }
+
+
+            // User Found
+            else {
+                result[0].password = '';
+                res.status(200).send(result);
+            }
+
         }).catch((err) => {
+            console.log(err);
             res.status(500).send()
         });
 })

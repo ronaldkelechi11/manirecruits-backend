@@ -4,7 +4,6 @@
   "description": "Backend for Mani Recruits and Training Website",
   "main": "app.js",
   "scripts": {
-    "test": "jest",
     "dev": "nodemon app.js",
     "start": "nodemon app.js"
   },
