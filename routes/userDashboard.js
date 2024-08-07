@@ -54,5 +54,48 @@ router.get('/home', async (req, res) => {
         });
 })
 
+// Apply for a post
+router.put('/apply/:_id', async (req, res) => {
+    // Post Id
+    let post_id = req.params._id
+
+    // User Email
+    let { userEmail } = req.body
+    let userId = ""
+
+    // Search for email then return User ID then add to applications on Post
+    const user = await User.findOne({ email_address: userEmail })
+    try {
+        // User found
+        if (user) {
+            console.log(user?._id);
+            userId = user._id
+
+
+            Post.findOneAndUpdate({ _id: post_id }, { $push: { applications: userId.toString() } })
+
+                // Succesfully Applied for the post
+                .then((result) => {
+                    res.status(200).send()
+                })
+
+                // Error Applying for Post
+                .catch((err) => {
+                    myError("Error in Application of a post", err)
+                    res.status(500).send()
+                });
+        }
+
+        // User not Found
+        else {
+            res.status(500).send("No user")
+        }
+    } catch (error) {
+        res.status(500).send()
+    }
+
+
+})
+
 
 module.exports = router

@@ -66,4 +66,9 @@ router.post('/deletepost', async (req, res) => {
         });
 })
 
+// See Applicants for a post
+router.get('/applicants', async (req, res) => {
+
+})
+
 module.exports = router
