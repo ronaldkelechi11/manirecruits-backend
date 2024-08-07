@@ -3,6 +3,7 @@ const Post = require('../models/PostModel.js')
 const User = require('../models/UserModel.js')
 const router = express.Router()
 
+
 // Return data for adminMain {userCount, postCount, activeClients}
 router.get('/main', async (req, res) => {
     var data = {
@@ -36,7 +37,6 @@ router.get('/main', async (req, res) => {
     res.status(200).send(data)
 })
 
-
 // Add New Post
 router.post('/addpost', async (req, res) => {
     var { post } = req.body
@@ -60,9 +60,9 @@ router.post('/deletepost', async (req, res) => {
 
     postToDelete.deleteOne()
         .then((result) => {
-
+            res.status(200).send()
         }).catch((err) => {
-
+            res.status(500).send()
         });
 })
 

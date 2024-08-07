@@ -1,6 +1,7 @@
 const express = require('express')
 const Post = require('../models/PostModel.js')
 const User = require('../models/UserModel.js')
+const { myError } = require('../middlewares/errorHandler.js')
 const router = express.Router()
 
 
@@ -10,7 +11,7 @@ router.get('/settings/:email', async (req, res) => {
 
     await User.find({ email_address: email })
         .then((result) => {
-            
+
             // User not found
             if (result == '') {
                 res.status(404).send('Resource not found')
@@ -29,13 +30,26 @@ router.get('/settings/:email', async (req, res) => {
         });
 })
 
+// search for a post
+router.get('/search/:_id', async (req, res) => {
+    var { _id } = req.params
+
+    await Post.findOne({ _id: _id })
+        .then((result) => {
+            res.status(200).send(result)
+        }).catch((err) => {
+            res.status(500).send()
+        });
+})
 
 // Fetch 20 posts at a time
 router.get('/home', async (req, res) => {
+
     await Post.find({})
         .then((result) => {
             res.status(200).send(result)
         }).catch((err) => {
+            myError('Error from UserDashbooard', err);
             res.status(500).send()
         });
 })

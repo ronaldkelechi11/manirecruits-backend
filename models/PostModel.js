@@ -18,7 +18,13 @@ var postSchema = new mongoose.Schema({
     salaryRange: String,
     prefferedGender: String,
     plusCommision: String,
-    workingDays: [String]
+    workingDays: [String],
+    applications:
+        [{
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: 'User'
+        }]
+
 })
 
 module.exports = mongoose.model("Post", postSchema)

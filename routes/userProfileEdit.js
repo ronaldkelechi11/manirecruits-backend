@@ -19,7 +19,6 @@ router.get("/:email", async (req, res) => {
             // User Found
             else {
                 result.password = ".";
-
                 res.status(200).send(result);
             }
         }).catch((err) => {
@@ -27,7 +26,6 @@ router.get("/:email", async (req, res) => {
             res.status(500).send()
         });
 })
-
 
 // Change user Role to either User or Recruiter
 router.post("/role/:email", async (req, res) => {
@@ -199,7 +197,7 @@ router.post("/associations/:email", async (req, res) => {
     }
 })
 
-// Update phone number or email address
+// Update phone number or email address (email address not changing yet)
 router.post("/contactdetails/:email", async (req, res) => {
     let email = req.params.email
     let { phone_number, email_address } = req.body
