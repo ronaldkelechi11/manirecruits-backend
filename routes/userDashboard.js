@@ -54,7 +54,7 @@ router.get('/home', async (req, res) => {
         });
 })
 
-// Apply for a post
+// Apply for a post DONE
 router.put('/apply/:_id', async (req, res) => {
     // Post Id
     let post_id = req.params._id
@@ -68,11 +68,9 @@ router.put('/apply/:_id', async (req, res) => {
     try {
         // User found
         if (user) {
-            console.log(user?._id);
             userId = user._id
 
-
-            Post.findOneAndUpdate({ _id: post_id }, { $push: { applications: userId.toString() } })
+            Post.findOneAndUpdate({ _id: post_id }, { $addToSet: { applications: userId.toString() } })
 
                 // Succesfully Applied for the post
                 .then((result) => {
@@ -88,13 +86,14 @@ router.put('/apply/:_id', async (req, res) => {
 
         // User not Found
         else {
-            res.status(500).send("No user")
+            res.status(404).send("No user")
         }
-    } catch (error) {
-        res.status(500).send()
     }
 
 
+    catch (error) {
+        res.status(500).send()
+    }
 })
 
 
