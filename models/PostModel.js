@@ -19,11 +19,11 @@ var postSchema = new mongoose.Schema({
     prefferedGender: String,
     plusCommision: String,
     workingDays: [String],
-    applications:
-        [{
-            type: mongoose.SchemaTypes.ObjectId,
-            ref: 'User'
-        }]
+    contactInformation: {
+        contactEmail: String,
+        contactNumber: String,
+        contactWhatsapp: String
+    },
 
 })
 
